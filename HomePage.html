@@ -2,14 +2,14 @@
   <head>
      <link rel="Shortcut Icon" type="image/x-icon" href="icon.ico" />
     <meta charset="utf-8">
-    <title>HomePage</title>  
+    <title>今晚吃什麼?</title>  
     <style type="text/css">
       html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
 	 
 	  .div1   {
 	          position:absolute;
 	          width:100px;
-	          height:600px;
+	          height:550px;
 	          display:none;
 	          background-color:lightblue;
 			  z-index:8;
@@ -24,7 +24,30 @@
 	          display:none;
 	          background-color:lightgreen;
 			  z-index:8;
+	         
 	  } 
+    .my{
+        z-index:9; 
+        position:absolute; 
+        left:550px;
+        top:20px;
+        font:bold 40px Tahoma, Geneva, sans-serif;
+        font-style:normal;
+        color:#ffffff;
+        background:#1568db;
+        border:0px solid #ffffff;
+        text-shadow:3px -1px 8px #cc43cc;
+        box-shadow:7px -3px 50px #000000;
+        -moz-box-shadow:7px -3px 50px #000000;
+        -webkit-box-shadow:7px -3px 50px #000000;
+        border-radius:90px 10px 90px 10px;
+        -moz-border-radius:90px 10px 90px 10px;
+        -webkit-border-radius:90px 10px 90px 10px;
+        width:400px;
+        padding:15px 36px;
+        cursor:pointer;
+        margin:0 auto;
+        }
 	  p {
 	  font-size:100%;
 	  font-family:微軟正黑體;
@@ -41,9 +64,7 @@
 	   var a=["25.1299735","25.1300599","25.1286559","25.1302606"];
 	   var b=["121.7399295","121.7412198","121.7427048","121.7403406"];
       
-	 
-
-   	  function mouseOver( e ){
+   	 function mouseOver( e ){
 	   $( "#labar_choose" ).mouseover(function() {
        $("#labar_says").fadeIn();
        });
@@ -153,7 +174,14 @@
         "click", marker, false );
  
       } 
-	  
+	  function labar(){
+	  var a=document.getElementById("labar_choose");
+	   a.setAttribute("href", "labar/Labar.html");
+	  } 
+	  function choice(){
+	   var a=document.getElementById("choice_choose");
+	   a.setAttribute("href", "二分/choice.html");
+	  }
 	  function start_time(){
 	  var current=new Date();
 	  document.getElementById("timing").innerHTML=current.toString();
@@ -179,8 +207,8 @@
 	    <img src="叉叉.jpg" onclick="end()"  style="width:100px;height:100px" /><br>
 		 <p ><a href="食來運轉.html" id="labar_choose"><img id="pic_1" src="labar.png" style="width:100px;height:100px" /></a><br>
 		    <a href="食字路口.html" id="choice_choose"><img  id="pic_2" src="問號.jpg" style="width:100px;height:100px" ></a><br>
-		   <a href="投食問路.html"><img id="pic_3" src="滿漢.jpg" style="width:100px;height:100px" /></a><br><br>
-		    <a href="explanation.pptx"><img id="pic_4" src="文件.jpg" style="width:100px;height:100px" /></a>
+		   <a href="投食問路.html"><img id="pic_3" src="滿漢.jpg" style="width:100px;hight:100px" /></a><br><br>
+		    <a href="explanation.pptx"><img id="pic_4" src="文件.jpg" style="width:100px;hight:100px" /></a>
          </p>
 	    </div>
         
@@ -196,58 +224,58 @@
 		<div id="div2" class="div2">
 		 <img  onclick="end_2()" src="叉叉.jpg" style="width:80px;height:80px" />
 		   <div  style="left:350px;top:-10px;position:absolute;">
-		       <h1 style="text-align:center;">輸入想要吃的東西　Ｅｘ：咖啡<br>
-		       <input class="form-control"style="width:500px;height:50px;font-size:30px;" type="text" placeholder="請輸入文字" id="eat" />
-		       <input  type = "button" value = "search" id = "search"></h1>
-               <div>
-                   <script language="JavaScript">
-                    document.write('<div align="center"><font size="2">');
-                    document.write("<span id='clock' style='font-size:40px;font-family:digital 7;'></span>");
-                    var now,hours,minutes,seconds,timeValue;
-                    function showtime(){
-                    now = new Date();
-                    hours = now.getHours();
-                    minutes = now.getMinutes();
-                    seconds = now.getSeconds();
-                    timeValue = (hours >= 12) ? "下午 " : "上午 ";
-                    timeValue += ((hours > 12) ? hours - 12 : hours) + " 點";
-                    timeValue += ((minutes < 10) ? " 0" : " ") + minutes + " 分";
-                    timeValue += ((seconds < 10) ? " 0" : " ") + seconds + " 秒";
-                    clock.innerHTML = timeValue;
-                    setTimeout("showtime()",100);
-                    }
-                    showtime();
-                    document.write('</font></div>');
-                   </script>
-               </div>
+		   <h1 style="text-align:center;">輸入想要吃的東西　Ｅｘ：咖啡<br>
+		   <input class="form-control"style="width:500px;height:50px;font-size:30px;" type="text" placeholder="請輸入文字" id="eat" />
+		   <input  type = "button" value = "search" id = "search" style="width:120px;font-size:25px;"></h1>
+         <div>
+             <script language="JavaScript">
+                 document.write('<div align="center"><font size="2">');
+                 document.write("<span id='clock' style='font-size:40px;font-family:digital 7;'></span>");
+                 var now, hours, minutes, seconds, timeValue;
+                 function showtime() {
+                     now = new Date();
+                     hours = now.getHours();
+                     minutes = now.getMinutes();
+                     seconds = now.getSeconds();
+                     timeValue = (hours >= 12) ? "下午 " : "上午 ";
+                     timeValue += ((hours > 12) ? hours - 12 : hours) + " 點";
+                     timeValue += ((minutes < 10) ? " 0" : " ") + minutes + " 分";
+                     timeValue += ((seconds < 10) ? " 0" : " ") + seconds + " 秒";
+                     clock.innerHTML = timeValue;
+                     setTimeout("showtime()", 100);
+                 }
+                 showtime();
+                 document.write('</font></div>');
+             </script>
+         </div>
+
+		   </div>
         </div>
 		
-		<div id="labar_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:120px;left:100px;background-color:red">
+		<div id="labar_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:120px;left:100px;background-color:burlywood">
 		 <p>食來運轉</p>
         </div>
-		<div id="choice_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:220px;left:100px;background-color:red">
+		<div id="choice_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:220px;left:100px;background-color:brown">
 		 <p>食字路口</p>
         </div>
-		<div id="takeFun_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:320px;left:100px;background-color:red">
+		<div id="takeFun_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:320px;left:100px;background-color:lightsalmon">
 		 <p>投食問路</p>
         </div>
 		
 		</div>
-		<div id="explanation_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:410px;left:100px;background-color:red">
+		<div id="explanation_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:410px;left:100px;background-color:moccasin">
 		 <p>說明文件</p>
         </div>
-		<div id="projec_name" >
-        <p style="font-family:微軟正黑體;font-size:50px; z-index:9; position:absolute; left:550px;">
-            今天晚餐吃甚麼????
-            
-        </p>
+      <div id="projec_name">
+          <p class="my" id="title">
+              今天晚餐吃什麼????
+          </p>
 
-		</div>
+      </div>
         <div id="map-canvas"> 
         </div>
   
   
-  </div>
 
   </body>
 </html>
