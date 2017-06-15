@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="Shortcut Icon" type="image/x-icon" href="icon.ico" />
+    <meta charset="utf-8" />
+    <title>LaBar</title>
+    <style>
+        .labar 
+        {
+            width:850px;
+            height:720px;
+            position:fixed;
+        }
+        .button 
+        {
+            width:100px;
+            height:80px;
+            position:fixed;
+            top:400px;
+            left:350px;
+        }
+
+        .background 
+        {
+            background-image:url(background.png); 
+            background-size:1600px; 
+            background-attachment:fixed; 
+            
+        }
+        .pic 
+        {
+            position:fixed;
+            width:120px;
+            height:110px;
+            top:230px;
+            z-index:3;
+        }
+        .display 
+        {
+            position:fixed;
+            top:60px;
+            left:850px;
+        }
+
+    </style>
+    <script>
+	    
+	    var myVar;
+		var seconds=0;
+        function change()
+        {
+            var food = document.getElementById("food");
+            var name = ["義大利麵", "水餃", "便當","牛肉麵","炒飯","泡麵"];
+            var index1, index2, index3;
+            index1 = Math.floor(Math.random() * name.length);
+            index2 = Math.floor(Math.random() * name.length);
+            index3 = Math.floor(Math.random() * name.length);
+            pic1.setAttribute("src", name[index1] + ".jpg");
+            pic2.setAttribute("src", name[index2] + ".jpg");
+            pic3.setAttribute("src", name[index3] + ".jpg");
+           
+			if(seconds==20){
+			index1 = Math.floor(Math.random() * name.length);
+			  pic1.setAttribute("src", name[index1] + ".jpg");
+              pic2.setAttribute("src", name[index1] + ".jpg");
+              pic3.setAttribute("src", name[index1] + ".jpg");
+              food.innerHTML = name[index1];
+              food.setAttribute("href", "https://www.google.com.tw/maps/search/" + name[index1])
+			  seconds=0;
+			  clearInterval(myVar);
+			  var button = document.getElementById("button");
+			  button.setAttribute("src", "button.png");
+			}
+			
+		    ++seconds;
+        }
+        function start_labar()
+        {    
+            var text = document.getElementById("text");
+            text.innerHTML = "點擊可搜尋附近的店家<br>您抽中的食物是 : ";
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+            var button = document.getElementById("button");
+            button.setAttribute("src", "button2.png");
+            myVar=setInterval(function(){change() }, 100);
+        }
+       
+      
+    </script>
+</head>
+<body class="background">
+    <div id="labar" >
+        <img src="labar.png" class ="labar" id="mechine"/>
+        <img src="button.png" class ="button" id="button" onclick="start_labar()" />
+        <img src="問號.jpg" class="pic" id="pic1" style="left:160px;"/>
+        <img src="問號.jpg" class="pic" id="pic2" style="left:340px;"/>
+        <img src="問號.jpg" class="pic" id="pic3" style="left:520px;"/>
+    </div>
+    <div>
+        <a href="HomePage.html">
+            <img src="吃.jpg" style="position:fixed; right:20px; width:60px;" />
+        </a>
+    </div>
+    <div id="display" class="display">
+       <h1 style="font-size:60px;font-family:微軟正黑體;" id="text">按下按鈕啟動食物拉霸</h1>
+       <a target="_blank" href="#" style="font-size:60px;font-family:微軟正黑體; z-index:4; top:450px; left:1100px; position:fixed;" id="food"></a>
+       <img src="plate.png" style="width:750px;height:450px" />
+    </div>
+</body>
+</html>

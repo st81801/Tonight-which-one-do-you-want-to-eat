@@ -1,0 +1,253 @@
+﻿<html>
+  <head>
+     <link rel="Shortcut Icon" type="image/x-icon" href="icon.ico" />
+    <meta charset="utf-8">
+    <title>HomePage</title>  
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+	 
+	  .div1   {
+	          position:absolute;
+	          width:100px;
+	          height:600px;
+	          display:none;
+	          background-color:lightblue;
+			  z-index:8;
+	          float:left; 
+        	  
+	  }
+	   .div2   {
+	          position:absolute;
+	          top:535px;
+			  width:100%;
+	          height:200px;
+	          display:none;
+	          background-color:lightgreen;
+			  z-index:8;
+	  } 
+	  p {
+	  font-size:100%;
+	  font-family:微軟正黑體;
+	  }
+    </style>
+	
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs7Q8A5rO1B4tRdPKWIVewqJUuU_4fncE">
+    </script> 
+    <script type="text/javascript">
+	   var name_choice = ["速食","燒肉","夜市","咖啡"];
+	   var a=["25.1299735","25.1300599","25.1286559","25.1302606"];
+	   var b=["121.7399295","121.7412198","121.7427048","121.7403406"];
+      
+	 
+
+   	  function mouseOver( e ){
+	   $( "#labar_choose" ).mouseover(function() {
+       $("#labar_says").fadeIn();
+       });
+	   $( "#choice_choose" ).mouseover(function() {
+       $("#choice_says").fadeIn();
+       });
+	   $( "#pic_3" ).mouseover(function() {
+       $("#takeFun_says").fadeIn();
+       });
+	   $( "#pic_4" ).mouseover(function() {
+       $("#explanation_says").fadeIn();
+       });
+	  }
+	  function mouseOut( e ){  
+       $( "#labar_choose" ).mouseout(function() {
+       $("#labar_says").fadeOut();
+       });
+	   $( "#choice_choose" ).mouseout(function() {
+       $("#choice_says").fadeOut();
+       });
+	   $( "#pic_3" ).mouseout(function() {
+       $("#takeFun_says").fadeOut();
+       });
+	   $( "#pic_4" ).mouseout(function() {
+       $("#explanation_says").fadeOut();
+       });
+           }
+	  function start(){
+	     $(document).ready(function(){
+	    $("#div1").fadeIn();
+		//$("#div1").fadeTo("slow", 0.8);
+       });
+	   }
+	   
+	   function start_2(){
+	     $(document).ready(function(){
+	    $("#div2").fadeIn();
+		$("#timing").fadeIn();
+		//$("#div1").fadeTo("slow", 0.8);
+       });
+	   }
+	   
+	   
+	   
+	   function end(){
+	     $(document).ready(function(){
+	    $("#div1").fadeOut();
+       });
+	   }
+	   
+	   
+	   function end_2(){
+	     $(document).ready(function(){
+	    $("#div2").fadeOut();
+		$("#timing").fadeOut();
+       });
+	   }
+	   
+      function initialize() {
+	  
+	  
+        var mapOptions = {
+          center: { lat: 25.1300746, lng: 121.7400557},
+          zoom: 18
+        };
+        var map = new google.maps.Map(
+            document.getElementById('map-canvas'),
+            mapOptions);
+
+		
+		}	
+ 
+
+	 function marker(){
+	  
+	   var ans=document.getElementById("eat");
+	   var searchKey ="";
+	   searchKey=( ans.value );
+
+	   var k=-1;
+	   for(var i=0;i<4;i++){
+	      if(name_choice[i]==searchKey){
+	      k=i;
+	   }
+	   }
+	    
+		var ans_a= parseFloat(a[k]);
+		var ans_b= parseFloat(b[k]);
+		console.log(ans_a);
+		console.log(ans_b);
+	    var mapOptions = {
+          center: { lat: 25.1300746, lng: 121.7400557},
+          zoom: 18
+        };
+	   var map = new google.maps.Map(
+            document.getElementById('map-canvas'),
+            mapOptions);	
+	    var marker = new google.maps.Marker({
+          position: { lat: ans_a, lng: ans_b},
+          map: map
+		  
+        });
+	   
+	  }
+	  function start_search(){
+      document.getElementById( "search" ).addEventListener(
+        "click", marker, false );
+ 
+      } 
+	  
+	  function start_time(){
+	  var current=new Date();
+	  document.getElementById("timing").innerHTML=current.toString();
+	  
+	  }
+	 
+       document.addEventListener( "mouseover", mouseOver, false );
+	   document.addEventListener( "mouseout", mouseOut, false );
+	   window.addEventListener( "load", start_search, false );
+	   window.addEventListener( "load", start_time, false );
+      google.maps.event.addDomListener(
+          window, 'load', initialize);
+		  
+    </script>
+  </head>
+  <body>
+  <div>
+        <div id="top" style="float:right;z-index:5;position:absolute;">
+        <img id="way" onclick="start()"src="吃.jpg" style="width:80px;height:80px" />
+        </div>
+
+        <div id="div1" class="div1">
+	    <img src="叉叉.jpg" onclick="end()"  style="width:100px;height:100px" /><br>
+		 <p ><a href="食來運轉.html" id="labar_choose"><img id="pic_1" src="labar.png" style="width:100px;height:100px" /></a><br>
+		    <a href="食字路口.html" id="choice_choose"><img  id="pic_2" src="問號.jpg" style="width:100px;height:100px" ></a><br>
+		   <a href="投食問路.html"><img id="pic_3" src="滿漢.jpg" style="width:100px;height:100px" /></a><br><br>
+		    <a href="explanation.pptx"><img id="pic_4" src="文件.jpg" style="width:100px;height:100px" /></a>
+         </p>
+	    </div>
+        
+		<div id="div1" class="div1">
+		<img src="叉叉.jpg" onclick="end()"  style="width:100px;height:80px" /><br>
+		   
+       </div>
+	
+		<div id="bottom" style="z-index:5;position:absolute;top:650px;left:50%">
+        <img onclick="start_2()" src="吃.jpg" style="width:80px;height:80px" />
+        </div>
+		
+		<div id="div2" class="div2">
+		 <img  onclick="end_2()" src="叉叉.jpg" style="width:80px;height:80px" />
+		   <div  style="left:350px;top:-10px;position:absolute;">
+		       <h1 style="text-align:center;">輸入想要吃的東西　Ｅｘ：咖啡<br>
+		       <input class="form-control"style="width:500px;height:50px;font-size:30px;" type="text" placeholder="請輸入文字" id="eat" />
+		       <input  type = "button" value = "search" id = "search"></h1>
+               <div>
+                   <script language="JavaScript">
+                    document.write('<div align="center"><font size="2">');
+                    document.write("<span id='clock' style='font-size:40px;font-family:digital 7;'></span>");
+                    var now,hours,minutes,seconds,timeValue;
+                    function showtime(){
+                    now = new Date();
+                    hours = now.getHours();
+                    minutes = now.getMinutes();
+                    seconds = now.getSeconds();
+                    timeValue = (hours >= 12) ? "下午 " : "上午 ";
+                    timeValue += ((hours > 12) ? hours - 12 : hours) + " 點";
+                    timeValue += ((minutes < 10) ? " 0" : " ") + minutes + " 分";
+                    timeValue += ((seconds < 10) ? " 0" : " ") + seconds + " 秒";
+                    clock.innerHTML = timeValue;
+                    setTimeout("showtime()",100);
+                    }
+                    showtime();
+                    document.write('</font></div>');
+                   </script>
+               </div>
+        </div>
+		
+		<div id="labar_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:120px;left:100px;background-color:red">
+		 <p>食來運轉</p>
+        </div>
+		<div id="choice_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:220px;left:100px;background-color:red">
+		 <p>食字路口</p>
+        </div>
+		<div id="takeFun_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:320px;left:100px;background-color:red">
+		 <p>投食問路</p>
+        </div>
+		
+		</div>
+		<div id="explanation_says" style="font-family:微軟正黑體;font-size:30px;display:none;z-index:9;position:absolute;top:410px;left:100px;background-color:red">
+		 <p>說明文件</p>
+        </div>
+		<div id="projec_name" >
+        <p style="font-family:微軟正黑體;font-size:50px; z-index:9; position:absolute; left:550px;">
+            今天晚餐吃甚麼????
+            
+        </p>
+
+		</div>
+        <div id="map-canvas"> 
+        </div>
+  
+  
+  </div>
+
+  </body>
+</html>

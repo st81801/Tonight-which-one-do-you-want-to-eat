@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="Shortcut Icon" type="image/x-icon" href="icon.ico" />
+    <meta charset="utf-8">
+    <title>食字路口</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+       .option
+       {
+            z-index:3;
+            width:320px;
+            height:300px;
+       }
+        .dicplay_picture 
+        {
+            width:380px;
+            height:360px;
+        }
+        .display 
+        {
+            position:relative;
+            top:20px;
+        }
+    </style>
+     <script>
+         var time = 0;
+         var first_select, second_select, third_select;
+         var index1,index2;
+         var string_a="";
+		 var string_b="";
+		 
+		 
+		 function onclick_a(ans_a){	 
+		 
+		 a.setAttribute("href", ans_a); 
+         }
+		 function onclick_b(ans_b){	 
+		 
+		  b.setAttribute("href", ans_b); 
+         }		
+		 
+		 
+         function bigOption(o)
+         {
+             o.style.height = "380px";
+             o.style.width = "340px";
+         }
+         function originalOption(o)
+         {
+             o.style.height = "320px";
+             o.style.width = "300px";
+         }
+         function generateQuestion()
+         {
+             var left_option = document.getElementById("left_option");
+             var right_option = document.getElementById("right_option");
+             var left_pic = document.getElementById("pic1");
+             var right_pic = document.getElementById("pic2");
+             var question1 = ["想吃 西式 還是 中式 的呢?", "想吃 清淡 還是 口味重 的呢?"]
+             var question2 = ["想吃 飯 還是 麵 ?", "想吃 甜 的還是 鹹 的呢?"]
+             var text = document.getElementById("text");
+
+             if (time == 0) {
+                 index1 = Math.floor(Math.random() * question1.length);
+                 text.innerHTML = question1[index1];
+                 if (index1 == 0) {
+                     left_option.setAttribute("src", "西式左.png");
+                     right_option.setAttribute("src", "中式右.png");
+                     left_pic.setAttribute("src", "西式.jpg");
+                     right_pic.setAttribute("src", "中式.jpg");
+                 }
+                 else {
+                     left_option.setAttribute("src", "清淡左.png");
+                     right_option.setAttribute("src", "口味重右.png");
+                     left_pic.setAttribute("src", "清淡.jpg");
+                     right_pic.setAttribute("src", "口味重.jpg");
+                 }
+             }
+             else if (time == 1)
+             {
+                 index2 = Math.floor(Math.random() * question2.length);
+                 text.innerHTML = question2[index2];
+                 if (index2 == 0)
+                 {
+                     left_option.setAttribute("src", "飯左.png");
+                     right_option.setAttribute("src", "麵右.png");
+                     left_pic.setAttribute("src", "飯.jpg");
+                     right_pic.setAttribute("src", "麵.jpg");
+                 }
+                 else
+                 {
+                     left_option.setAttribute("src", "甜左.png");
+                     right_option.setAttribute("src", "鹹右.png");
+                     left_pic.setAttribute("src", "甜.jpg");
+                     right_pic.setAttribute("src", "鹹.jpg");
+                 }
+             }
+           else if (time == 2) {
+		         string_a="";
+				 string_b="";
+                 var a = document.getElementById("left_a");
+                 var b = document.getElementById("right_a");
+                 text.innerHTML = "根據您的喜好，最後選擇吃哪道呢?";
+
+                   if (index1 == 0 && index2 == 0) {
+                     if (first_select == 0 && second_select == 0) //西飯
+                     {   
+					     string_a="https://www.google.com.tw/maps/search/焗烤/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/石鍋拌飯/@25.1282158,121.7422167,15.91z";
+					    
+                        // a.setAttribute("href", "https://www.google.com.tw/maps/search/焗烤/@25.1282158,121.7422167,15.91z");
+                        // b.setAttribute("href", "https://www.google.com.tw/maps/search/石鍋拌飯/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "焗飯左.png");
+                         right_option.setAttribute("src", "石鍋拌飯右.png");
+                         left_pic.setAttribute("src", "焗飯.jpg");
+                         right_pic.setAttribute("src", "石鍋拌飯.jpg");
+                     }
+                     else if (first_select == 0 && second_select == 1) //西麵
+                     {
+					     string_a="https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/漢堡/@25.1282158,121.7422167,15.91z";
+					      
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/漢堡/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "義大利麵左.png");
+                         right_option.setAttribute("src", "漢堡右.png");
+                         left_pic.setAttribute("src", "義大利麵.jpg");
+                         right_pic.setAttribute("src", "漢堡.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 0) //中飯
+                     {
+					     string_a="https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/燴飯/@25.1282158,121.7422167,15.91z";
+					    
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/燴飯/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "炒飯左.png");
+                         right_option.setAttribute("src", "燴飯右.png");
+                         left_pic.setAttribute("src", "炒飯.jpg");
+                         right_pic.setAttribute("src", "燴飯.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 1) //中麵
+                     {
+					    string_a="https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z";
+					    
+						
+					 
+                        // a.setAttribute("href", "https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z");
+                        // b.setAttribute("href", "https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "餛飩麵左.png");
+                         right_option.setAttribute("src", "乾拌麵右.png");
+                         left_pic.setAttribute("src", "餛飩麵.jpg");
+                         right_pic.setAttribute("src", "乾拌麵.jpg");
+                     }
+                 }
+                 else if (index1 == 0 && index2 == 1) {
+                     if (first_select == 0 && second_select == 0) //西甜
+                     {
+					    string_a="https://www.google.com.tw/maps/search/甜甜圈/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/冰淇淋/@25.1282158,121.7422167,15.91z";
+					 
+					 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/甜甜圈/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/冰淇淋/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "甜甜圈左.png");
+                         right_option.setAttribute("src", "冰淇淋右.png");
+                         left_pic.setAttribute("src", "甜甜圈.jpg");
+                         right_pic.setAttribute("src", "冰淇淋.jpg");
+                     }
+                     else if (first_select == 0 && second_select == 1)//西鹹
+                     {
+					    string_a="https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/鬆餅/@25.1282158,121.7422167,15.91z";
+					    
+					 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/鬆餅/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "義大利麵左.png");
+                         right_option.setAttribute("src", "鬆餅右.png");
+                         left_pic.setAttribute("src", "義大利麵.jpg");
+                         right_pic.setAttribute("src", "鬆餅.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 0) //中甜
+                     {
+					     string_a="https://www.google.com.tw/maps/search/糕餅/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/麻糬/@25.1282158,121.7422167,15.91z";
+					      
+					 
+					      
+                      //   a.setAttribute("href", "https://www.google.com.tw/maps/search/糕餅/@25.1282158,121.7422167,15.91z");
+                      //   b.setAttribute("href", "https://www.google.com.tw/maps/search/麻糬/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "糕餅左.png");
+                         right_option.setAttribute("src", "麻糬右.png");
+                         left_pic.setAttribute("src", "糕餅.jpg");
+                         right_pic.setAttribute("src", "麻糬.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 1) //中鹹
+                     {
+					      string_a="https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z";
+					 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/麵/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "炒飯左.png");
+                         right_option.setAttribute("src", "乾拌麵右.png");
+                         left_pic.setAttribute("src", "炒飯.jpg");
+                         right_pic.setAttribute("src", "乾拌麵.jpg");
+                     }
+                 }
+                 else if (index1 == 1 && index2 == 0) {
+                     if (first_select == 0 && second_select == 0) //淡飯
+                     {
+					       string_a="https://www.google.com.tw/maps/search/稀飯/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/豆漿/@25.1282158,121.7422167,15.91z";
+					    
+					 
+                        // a.setAttribute("href", "https://www.google.com.tw/maps/search/稀飯/@25.1282158,121.7422167,15.91z");
+                        // b.setAttribute("href", "https://www.google.com.tw/maps/search/豆漿/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "稀飯左.png");
+                         right_option.setAttribute("src", "豆米漿右.png");
+                         left_pic.setAttribute("src", "稀飯.jpg");
+                         right_pic.setAttribute("src", "豆米漿.jpg");
+                     }
+                     else if (first_select == 0 && second_select == 1)//淡麵
+                     {
+					 
+					       string_a="https://www.google.com.tw/maps/search/鍋燒/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/米粉/@25.1282158,121.7422167,15.91z";
+					 
+					 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/鍋燒/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/米粉/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "鍋燒麵左.png");
+                         right_option.setAttribute("src", "米粉湯右.png");
+                         left_pic.setAttribute("src", "鍋燒麵.jpg");
+                         right_pic.setAttribute("src", "米粉湯.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 0) //重飯
+                     {
+					    
+						 string_a="https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/石鍋拌飯/@25.1282158,121.7422167,15.91z";
+					 
+					   
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/炒飯/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/石鍋拌飯/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "炒飯左.png");
+                         right_option.setAttribute("src", "石鍋拌飯右.png");
+                         left_pic.setAttribute("src", "炒飯.jpg");
+                         right_pic.setAttribute("src", "石鍋拌飯.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 1) //重麵
+                     {
+					     string_a="https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/便利商店/@25.1282158,121.7422167,15.91z";
+					      
+					 
+                        // a.setAttribute("href", "https://www.google.com.tw/maps/search/義大利麵/@25.1282158,121.7422167,15.91z");
+                        // b.setAttribute("href", "https://www.google.com.tw/maps/search/便利商店/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "義大利麵左.png");
+                         right_option.setAttribute("src", "泡麵右.png");
+                         left_pic.setAttribute("src", "義大利麵.jpg");
+                         right_pic.setAttribute("src", "泡麵.jpg");
+                     }
+                 }
+                 else if (index1 == 1 && index2 == 1) {
+                     if (first_select == 0 && second_select == 0) //淡甜
+                     {
+					     string_a="https://www.google.com.tw/maps/search/沙拉/@25.1282158,121.7422167,15.91z";
+					     string_b="https://www.google.com.tw/maps/search/水果/@25.1282158,121.7422167,15.91z";
+					    
+					 
+					 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/沙拉/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/水果/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "沙拉左.png");
+                         right_option.setAttribute("src", "水果右.png");
+                         left_pic.setAttribute("src", "沙拉.jpg");
+                         right_pic.setAttribute("src", "水果.jpg");
+                     }
+                     else if (first_select == 0 && second_select == 1)//淡鹹
+                     {
+					     
+					    string_a="https://www.google.com.tw/maps/search/麵包/@25.1282158,121.7422167,15.91z";
+					    string_b="https://www.google.com.tw/maps/search/餅乾/@25.1282158,121.7422167,15.91z";
+					    
+                        // a.setAttribute("href", "https://www.google.com.tw/maps/search/麵包/@25.1282158,121.7422167,15.91z");
+                        // b.setAttribute("href", "https://www.google.com.tw/maps/search/餅乾/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "麵包左.png");
+                         right_option.setAttribute("src", "餅乾右.png");
+                         left_pic.setAttribute("src", "麵包.jpg");
+                         right_pic.setAttribute("src", "餅乾.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 0) //重甜
+                     {
+					    string_a="https://www.google.com.tw/maps/search/蛋糕/@25.1282158,121.7422167,15.91z";
+					    string_b="https://www.google.com.tw/maps/search/冰淇淋/@25.1282158,121.7422167,15.91z";
+					     
+						 
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/蛋糕/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/冰淇淋/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "蛋糕左.png");
+                         right_option.setAttribute("src", "冰淇淋右.png");
+                         left_pic.setAttribute("src", "蛋糕.jpg");
+                         right_pic.setAttribute("src", "冰淇淋.jpg");
+                     }
+                     else if (first_select == 1 && second_select == 1) //重鹹
+                     {
+					    string_a="https://www.google.com.tw/maps/search/火鍋/@25.1282158,121.7422167,15.91z";
+					    string_b="https://www.google.com.tw/maps/search/快炒/@25.1282158,121.7422167,15.91z";
+					 
+					     
+                       //  a.setAttribute("href", "https://www.google.com.tw/maps/search/火鍋/@25.1282158,121.7422167,15.91z");
+                       //  b.setAttribute("href", "https://www.google.com.tw/maps/search/快炒/@25.1282158,121.7422167,15.91z");
+                         left_option.setAttribute("src", "火鍋左.png");
+                         right_option.setAttribute("src", "快炒右.png");
+                         left_pic.setAttribute("src", "火鍋.jpg");
+                         right_pic.setAttribute("src", "快炒.jpg");
+                     }
+                 }
+             }
+             else if(third_select==0)
+             {
+			  var a = document.getElementById("left_a");
+			   a.setAttribute("href", string_a);
+             }
+            else if(third_select==1){
+			   var b = document.getElementById("right_a");
+			   b.setAttribute("href", string_b);
+			}
+             
+            time++;
+         }
+         function left_click()
+         {
+             console.log(time);
+             if (time == 1)
+                 first_select = 0;
+             else if (time == 2)
+                 second_select = 0;
+             else
+                 third_select = 0; 
+             generateQuestion();
+         }
+         function right_click() {
+             if (time == 1)
+                 first_select = 1;
+             else if (time == 2)
+                 second_select = 1;
+             else
+                 third_select = 1;
+             generateQuestion();
+         }
+         function restart()
+         {
+             time = 0;
+             first_select = null;
+             second_select = null;
+             third_select = null;
+             index1 = null;
+             index2 = null;
+             string_a = "";
+             string_b = "";
+             generateQuestion();
+         }
+         window.addEventListener("load",generateQuestion,false);
+    </script>
+</head>
+<body style="background-image:url(backgroundv2.jpg);">
+    <div id="question">
+        <p>
+            <img src="題目卷軸v2.png" style="width:1000px;height:250px; position:relative; left:250px;font-family:微軟正黑體"/>
+        </p>   
+        <p style="position:absolute;top:40px;left:380px;font-size:50px;font-family:微軟正黑體 " id="text">
+
+        </p>
+    </div>
+    <div style="">
+        <a href="HomePage.html">
+            <img src="吃.jpg" style="position:fixed; right:20px;top:20px; width:60px;" />
+        </a>
+        <input type="button" onclick="restart()" value="Restart" style="font-size:20px;width:80px; height:50px;position:fixed; right:100px;top:20px;"/>
+    </div>
+    <div id="picture" class="display">
+        <span>
+            <a href="#" id="left_a"><img src="路標左.png" class="option" id="left_option" onmouseover="bigOption(this)" onmouseout="originalOption(this)" onclick="left_click()" /> </a>
+            <img src="問號.jpg" class="dicplay_picture" id="pic1"/>
+        </span>
+      <span style="font-size:60px;position:relative; bottom:150px;">vs</span>
+      <img src="問號.jpg" class="dicplay_picture" id="pic2" />
+        <a href="#" id="right_a"><img src="路標右.png" class="option" id="right_option" onmouseover="bigOption(this)" onmouseout="originalOption(this)" onclick="right_click()" /></a> 
+    </div> 
+
+</body>
+</html>
+

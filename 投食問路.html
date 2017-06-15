@@ -1,0 +1,559 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <link rel="Shortcut Icon" type="image/x-icon" href="icon.ico" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>滿漢全席</title>
+  <style>
+  #grabege {left:400px;top:520px; width: 240px; height: 240px;position:absolute; }
+  #bowl {left:900px;top:520px;width:200px;height:200px;position:absolute;}
+ div#abgne_marquee {
+	position: absolute;
+	overflow: hidden;	/* 超出範圍的部份要隱藏 */
+	width: 800px;
+	height: 50px;
+	border: 1px solid #ccc;
+}
+div#abgne_marquee ul, div#abgne_marquee li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+    
+}
+div#abgne_marquee ul {
+	position: absolute;
+}
+div#abgne_marquee ul li a {
+	display: block;
+	overflow: hidden;	/* 超出範圍的部份要隱藏 */
+	font-size:50px;
+	height: 50px;
+	line-height: 50px;
+	text-decoration: none;
+    text-align:center;
+    font-weight:800;
+    font-family:微軟正黑體;
+}
+
+   .drag {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 10px;
+        text-align:center;
+        background-color:white;
+        z-index:5;
+        position:absolute;
+    }
+    .text {
+        font-size:25px;
+        position:relative; 
+        top:30px;
+        text-shadow:2px 2px 2px rgba(131,117,255,1);
+        font-weight:bold;
+        color:#2D79CF;
+        background-color:#FCFFFF;
+        letter-spacing:6pt;
+        word-spacing:2pt;
+        text-align:center;
+        font-family:arial black, sans-serif;
+        line-height:1;
+        margin:0px;
+        padding:0px;
+    }
+    div {
+        z-index:3;
+        float:left;
+    }
+    p
+    {
+        z-index:2;
+    }
+  </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+     
+      $(function () {
+          var $marqueeUl = $('div#abgne_marquee ul'),
+              $marqueeli = $marqueeUl.append($marqueeUl.html()).children(),
+              _height = $('div#abgne_marquee').height() * -1,
+              scrollSpeed = 740,
+              timer,
+              speed = 2000 + scrollSpeed;
+
+          
+          $marqueeli.hover(function () {
+              clearTimeout(timer);
+          }, function () {
+              timer = setTimeout(showad, speed);
+          });
+
+          
+          function showad() {
+              var _now = $marqueeUl.position().top / _height;
+              _now = (_now + 1) % $marqueeli.length;
+
+             
+              $marqueeUl.animate({
+                  top: _now * _height
+              }, scrollSpeed, function () {
+                  
+                  if (_now == $marqueeli.length / 2) {
+                      $marqueeUl.css('top', 0);
+                  }
+              });
+
+             
+              timer = setTimeout(showad, speed);
+          }
+
+  
+          timer = setTimeout(showad, speed);
+
+         
+      });
+
+
+      $(function () {
+          $("div[class='drag']").draggable({
+              containment: "#box",
+              scroll: false
+          });
+      });
+
+      $(function () {
+ 
+            $("#drag1").mouseover(function () {
+                $("#grabege").droppable({
+                    drop: function (event, ui) {
+                        $(this)
+                        $("#drag1").fadeOut();
+                    }
+                });
+            });
+
+
+          $("#drag2").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag2").fadeOut();
+                  }
+              });
+          });
+
+          $("#drag3").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag3").fadeOut();
+                  }
+              });
+          });
+
+          $("#drag4").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag4").fadeOut();
+                  }
+              });
+          });
+          $("#drag5").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag5").fadeOut();
+                  }
+              });
+          });
+          $("#drag6").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag6").fadeOut();
+                  }
+              });
+          });
+          $("#drag7").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag7").fadeOut();
+                  }
+              });
+          });
+
+          $("#drag8").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag8").fadeOut();
+                  }
+              });
+          });
+          $("#drag9").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag9").fadeOut();
+                  }
+              });
+          });
+          $("#drag10").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag10").fadeOut();
+                  }
+              });
+          });
+          $("#drag11").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag11").fadeOut();
+                  }
+              });
+          });
+          $("#drag12").mouseover(function () {
+              $("#grabege").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag12").fadeOut();
+                  }
+              });
+          });
+      })
+
+      $(function () {
+          var i = 500;
+          var top_random = Math.floor(Math.random() * 450) + 50;
+          var left_random = Math.floor(Math.random() * 1200);
+          $("#drag1").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag2").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag3").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag4").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag5").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag6").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag7").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag8").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag9").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag10").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag11").css({ top: top_random + 'px', left: left_random + 'px' });
+          top_random = Math.floor(Math.random() * 450) + 50;
+          left_random = Math.floor(Math.random() * 1200);
+          $("#drag12").css({ top: top_random + 'px', left: left_random + 'px' });
+      })
+
+      $(function () {
+          
+          var item = ["牛肉麵", "滷肉飯", "雞排", "肉燥飯", "雞肉飯", "泡麵", "炒飯", "義大利麵", "火鍋", "快炒", "水果", "辣炒年糕", "蛋糕", "藥燉排骨", "燉飯", "炸物", "滷味", "燒烤", "燒肉", "稀飯", "燒餅油條", "豆漿", "饅頭","蛋餅","蘿蔔糕","牛奶","紅豆餅","餅乾","丼飯","焗飯","速食","水煎包","漢堡","牛排","餡餅","可麗餅","小籠包","烤鴨","飯糰","粽子","港式飲茶","鱔魚意麵","潤餅","薑母鴨","大腸麵線","臭豆腐","咖哩飯","鹹酥雞","甜不辣","珍珠奶茶","四神湯","蚵仔煎","蜜餞","鳳梨酥","太陽餅","冰淇淋","新鮮果汁","鍋貼","玉米濃湯","日式料理","壽司","披薩","烤魷魚","章魚燒","大阪燒","牛札糖","麻婆豆腐","燴飯","泰式料理","越南河粉","蔥抓餅","高梁香腸","甕仔雞","烤地瓜","麵包","鬆餅","薯泥","洋蔥圈","豬肋排","砂鍋雞","起司鍋","巧克力鍋","清蒸螃蟹","三杯水蛙","涼麵","炸醬麵","石鍋拌飯","羅宋湯","酥皮濃湯","味噌湯","冰棒","奶昔","奶酪","冰砂","生魚片","拉麵","鐵板燒","文字燒","肉圓","骰子牛","魷魚羹","茶泡飯","客家料理","鹹豬肉","啤酒","米干","新疆料裡","碗糕","油飯"]
+          var item_index = new Array(100);
+          var index;
+          for (var i = 0; i < 100 ; i++)
+              item_index[i] = 0;
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp1").text(item[index]);
+          item_index[index] = 1;
+         
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp2").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp3").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp4").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp5").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp6").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp7").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp8").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp9").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp10").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp11").text(item[index]);
+          item_index[index] = 1;
+
+          index = Math.floor(Math.random() * 100);
+          while (item_index[index] != 0)
+              index = Math.floor(Math.random() * 100);
+          $("#dragp12").text(item[index]);
+          item_index[index] = 1;
+
+      })
+ 
+      $(function () {
+          $("#drag1").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag1").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp1").text() +"/@25.1282158,121.7422167,15z" ;
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag2").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag2").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp2").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag3").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag3").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp3").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag4").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag4").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp4").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag5").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag5").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp5").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag6").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag6").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp6").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag7").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag7").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp7").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag8").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag8").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp8").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag9").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag9").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp9").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag10").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag10").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp10").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag11").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag11").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp11").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+          $("#drag12").mouseover(function () {
+              $("#bowl").droppable({
+                  drop: function (event, ui) {
+                      $(this)
+                      $("#drag12").fadeOut();
+                      var temp = "https://www.google.com.tw/maps/search/" + $("#dragp12").text() + "/@25.1282158,121.7422167,15z";
+                      window.open(temp);
+                  }
+              });
+          });
+      })
+
+  </script>
+</head>
+<body style="background-image:url(hood.jpg);">
+
+    <a href="HomePage.html">
+        <img src="吃.jpg" style="position:fixed; right:20px; width:60px; z-index:5;" />
+    </a>
+
+    <div id="abgne_marquee" style="left:350px">
+        <ul>
+            <li><a><img src="eatface.png" style="width:50px;" /> 歡  迎  來  到  投  石  問  路 !</a></li>
+            <li><a>把你不想要吃的東西丟進垃圾桶</a></li>
+            <li><a>想要吃的丟進碗公找鄰近的的點!</a></li>
+           
+        </ul>
+    </div>
+    
+    <div id="box" style="width:1500px;height:680px; position:absolute;">
+        
+        <div id="drag1" class="drag">
+                <p class="text"  id="dragp1">
+
+                </p>
+        </div>
+        <div id="drag2" class="drag">
+            <p class="text" id="dragp2">
+               
+            </p>
+        </div>
+        <div id="drag3" class="drag">
+            <p class="text" id="dragp3">
+               
+            </p>
+        </div>
+        <div id="drag4" class="drag">
+            <p class="text" id="dragp4">
+            
+            </p>
+        </div>
+        <div id="drag5" class="drag">
+            <p class="text" id="dragp5">
+               
+            </p>
+        </div>
+        <div id="drag6" class="drag">
+            <p class="text" id="dragp6">
+                
+            </p>
+        </div>
+        <div id="drag7" class="drag">
+            <p class="text" id="dragp7">
+               
+            </p>
+        </div>
+        <div id="drag8" class="drag">
+            <p class="text" id="dragp8">
+                
+            </p>
+        </div>
+        <div id="drag9" class="drag">
+            <p class="text" id="dragp9">
+             
+            </p>
+        </div>
+        <div id="drag10" class="drag">
+            <p class="text" id="dragp10">
+                
+            </p>
+        </div>
+        <div id="drag11" class="drag">
+            <p class="text" id="dragp11">
+            
+            </p>
+        </div>
+        <div id="drag12" class="drag">
+            <p class="text" id="dragp12">
+              
+            </p>
+        </div>
+        <img  src="垃圾桶.png" id="grabege">
+        <a href="#"> <img src="碗.png" id="bowl" /></a>
+</div>
+</body>
+</html>
